@@ -5,6 +5,8 @@
  */
 
 import java.awt.Component;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -14,9 +16,14 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-public class PhotoQuiz {
+public class PhotoQuiz implements MouseMotionListener {
 
 	public static void main(String[] args) throws Exception {
+		PhotoQuiz p = new PhotoQuiz();
+		p.start();
+	}
+
+	public void start() throws MalformedURLException {
 		JFrame quizWindow = new JFrame();
 		quizWindow.setVisible(true);
 		quizWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // This will make sure the program exits when you
@@ -24,20 +31,25 @@ public class PhotoQuiz {
 
 		// 1. find an image on the internet, and put its URL in a String variable (from
 		// your browser, right click on the image, and select “Copy Image Address”)
+
 		String HEADShOT = "https://i.ytimg.com/vi/KHjy9XQGI84/maxresdefault.jpg";
 		// 2. create a variable of type "Component" that will hold your image
 		Component comp;
+		int score = 0;
 		// 3. use the "createImage()" method below to initialize your Component
 		comp = createImage(HEADShOT);
+		comp.addMouseMotionListener(this);
 		// 4. add the image to the quiz window
 		quizWindow.add(comp);
 		quizWindow.pack();
 		String scatter = JOptionPane.showInputDialog("Are you raging at my high skill hacks?");
 		if (scatter.equals("no")) {
 			System.out.println("INCORRECT");
+			score--;
 		}
 		if (scatter.equals("yes")) {
 			System.out.println("CORRECT");
+			score++;
 		}
 		quizWindow.remove(comp);
 		// 5. call the pack() method on the quiz window
@@ -54,7 +66,9 @@ public class PhotoQuiz {
 		// 10. find another image and create it (might take more than one line of code)
 		String DOOM = "https://cdn.shopify.com/s/files/1/1211/8882/products/Doomfist_Web_1024x1024.jpg?v=1501265116";
 		Component heh;
+
 		heh = createImage(DOOM);
+		heh.addMouseMotionListener(this);
 		// 11. add the second image to the quiz window
 		quizWindow.add(heh);
 		quizWindow.pack();
@@ -64,12 +78,14 @@ public class PhotoQuiz {
 		String gravy = JOptionPane.showInputDialog("How did Karl get this?");
 		if (gravy.equals("lol dunno")) {
 			System.out.println("INCORRECT");
+			score--;
 		}
-		if (gravy.equals("zarya ult")) {
+		if (gravy.equals("swag")) {
 			System.out.println("CORRECT");
+			score++;
 		}
 		// 14+ check answer, say if correct or incorrect, etc.
-
+JOptionPane.showMessageDialog(null, "Your score is "+score);
 	}
 
 	private static Component createImage(String imageUrl) throws MalformedURLException {
@@ -77,6 +93,18 @@ public class PhotoQuiz {
 		Icon icon = new ImageIcon(url);
 		JLabel imageLabel = new JLabel(icon);
 		return imageLabel;
+	}
+
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		// TODO Auto-generated method stub
+		System.out.println("aaaaaa");
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		// TODO Auto-generated method stub
+		System.out.println("aaaaaa");
 	}
 
 	/* OPTIONAL */
