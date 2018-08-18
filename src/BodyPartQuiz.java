@@ -24,24 +24,54 @@ public class BodyPartQuiz {
 	String thirdImage = "src/morgan.jpeg";
 	String fourthImage = "src/jack.jpeg";
 	
-	JFrame window = new JFrame();
+	JFrame frame = new JFrame();
 	JPanel panel = new JPanel();
 
 
 	private void startQuiz() {
 
 		// 1. Make an int variable to hold the score.
-
+int score=0;
 		// 2. Set the size of the window in the initializeGui() method below
 
 		for (int i = 0; i < 4; i++) {
 			
 			// 4. Ask the user who this person is and store their answer
 			String guess= JOptionPane.showInputDialog("who is this?");
-			
+			if(guess.equals ("arnold")&&i==0) {
 			// 5. Check their answer. If they guessed correctly:
 			// -- Tell them they are right and increase the score by 1
+JOptionPane.showMessageDialog(null, "right");
+score++;
+JOptionPane.showMessageDialog(null, "Your score is "+score);
+			}
+			else if(guess.equals("leonardo")&&i==1) {
+				JOptionPane.showMessageDialog(null, "right leo");
+				score++;
+				JOptionPane.showMessageDialog(null, "Your score is "+score);
+			}
+			else if(guess.equals("morgan")&&i==2) {
+				JOptionPane.showMessageDialog(null, "right mo");
+				score++;
+				JOptionPane.showMessageDialog(null, "Your score is "+score);
+			}
+			else if(guess.equals("jack")&&i==3) {
+				JOptionPane.showMessageDialog(null, "right jack");
+				score++;
+				JOptionPane.showMessageDialog(null, "Your score is "+score);
+			}
+			else {
+				if(i==0)
+					JOptionPane.showMessageDialog(null, "WRONG, arnold");
+				else if(i==1)
+					JOptionPane.showMessageDialog(null, "WRONG, leonardo");
+				else if(i==2)
+					JOptionPane.showMessageDialog(null, "WRONG, MO");
+				else if(i==3)
+					JOptionPane.showMessageDialog(null, "WRONG, jack");
 
+JOptionPane.showMessageDialog(null, "Your score is "+score);
+			}
 			// 6. Otherwise:
 			// -- Tell them they are wrong and who the person is
 
@@ -52,14 +82,14 @@ public class BodyPartQuiz {
 			// 9. .... repeat for all your images.....
 
 
+		
 		}
-
 	}
 
 	public void showNextImage() {
 		panel.removeAll();
 		panel.add(getNextImage());		
-		window.setVisible(true);
+		frame.setVisible(true);
 	}
 
 	public static void main(String[] args) {
@@ -71,11 +101,11 @@ public class BodyPartQuiz {
 	private void initializeGui() {
 		initializeImageList();
 		imageIterator = imageList.iterator();
-		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		window.add(panel);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.add(panel);
 		
 		// 3. Change the size of the window so that you can only see part of the image.		
-		window.setSize(500,500);
+		frame.setSize(100,200);
 		
 		showNextImage();
 		
