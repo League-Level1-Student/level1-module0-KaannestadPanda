@@ -34,6 +34,8 @@ else{
 
 
 void draw(){
+  int paddleX=mouseX;
+  int paddleY=380;
   background(200, 200, 200);
   image(backgroundImage,0,0);
   image(backgroundImage,0,0,width,height);
@@ -54,9 +56,11 @@ if(ballY>400){
  sound.trigger(); 
 }
 fill(200,200,200);
-rect(mouseX,380,50,20);
-
-
+rect(paddleX,paddleY,50,20);
+boolean result= intersects(ballX,ballY,paddleX,paddleY,50);
+if(result==true){
+  verticalBallSpeed=verticalBallSpeed*-1; 
+}
 
 
 
