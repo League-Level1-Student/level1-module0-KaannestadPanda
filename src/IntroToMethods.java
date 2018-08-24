@@ -14,8 +14,23 @@ public static void main(String[] args) {
 	//String theBest = name.getTheBestCoder();
 	//System.out.println(theBest);
 	
-	int sum = name.add(70,22);
-	System.out.println(sum);
+	//int sum = name.add(70,22);
+	//System.out.println(sum);
+	
+	//String yeah=name.what(7423);
+	//System.out.println(yeah);
+	
+	
+	//System.out.println(name.sumDouble(70, 71));
+	
+	
+	//if(name.monkeyTrouble(true, false)==true) {
+	//	System.out.println("trouble");
+	//}
+	//else {System.out.println("all good");}
+	
+	
+	
 }
 
 void weRock() {
@@ -59,6 +74,43 @@ int add(int one, int two) {
 	
 	return answer;
 	
+}
+
+String what(int who) {
+	
+	if(who%2==0) {
+		return "even";
+	}
+	else{
+		return "odd";
+		
+	}
+	
+}
+
+int sumDouble(int a,int b) {
+	int c=a+b;
+	if(a!=b) {
+		return(c);
+		
+	}
+	else if(a==b) {
+		return(c*2);
+	}
+	return 0;
+	
+}
+
+boolean monkeyTrouble(boolean aSmile, boolean bSmile) {
+	if(aSmile==true&&bSmile==true) {
+		return true;
+	}
+	else if(aSmile==false&&bSmile==false) {
+		return true;
+	}
+	else {
+		return false;
+	}
 }
 
 
